@@ -1,0 +1,32 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+main {
+    display: flex;
+
+    grid-gap: 15px;
+}
+
+.card {
+    display: grid;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.name {
+    font-size: 30px;
+    text-align: center;
+}
+
+.age {
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+}
+
+
+

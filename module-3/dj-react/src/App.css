@@ -1,0 +1,54 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav > h1{
+    /* text-align: center; */
+    font-size: 40px;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+    padding: 0px 20px;
+}
+
+main {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.squareone, .squaretwo, .squarethree, .squarefour {
+    position: relative;
+    width: 600px;
+    height: 300px;
+    border: 2px solid grey;
+    margin-bottom: 10px;
+    justify-self: center;
+}
+
+button {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+button:hover {
+    background-color: grey;
+    color: white;
+}
+
+.lastButton {
+    grid-column: 1/3;
+}
