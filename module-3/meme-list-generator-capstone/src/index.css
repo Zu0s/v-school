@@ -1,0 +1,147 @@
+/* NAV */
+nav {
+    text-align: center;
+}
+
+nav > h1{
+    display: inline-block;
+    padding: 10px 4px;
+}
+
+/* MAIN */
+.main--grid {
+    display: grid;
+    grid-template-columns: 20% 1fr 1fr 20%;
+    /* grid-gap: 5px; */
+}
+
+/* INPUTS */
+input {
+    padding: 6px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.main--topText{
+    grid-column: 1/3;
+}
+
+.main--bottomText{
+    grid-column: 3/5;
+    margin-left: 5px;
+}
+
+/* BUTTON */
+button {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.main-changeMemeButton {
+    grid-column: 2/4;
+    margin: 10px;
+    margin-bottom: 2px;
+}
+
+.main--save {
+    margin-top:10px;
+    grid-column: 2/4;
+    margin-bottom: 50px;
+}
+
+/* MEME IMAGE */
+.meme {
+    grid-column: 1/5;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+img {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    border-radius: 3px;
+    align-self: center;
+}
+
+.meme--image {
+    max-width: 100%;
+    border-radius: 3px;
+}
+
+/* MEME TEXT */
+.meme--text {
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px 0;
+    padding: 0 5px;
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
+}
+
+/* MEME COMPONENT */
+.memeComp--grid {
+    border: 1px solid black;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 24%;
+}
+
+.meme--delete {
+    grid-column: 1/2;
+}
+
+.meme--edit {
+    grid-column: 2/3;
+}
+
+.memeList {
+    font-size: 20px;
+}
+
+.meme--imgComp {
+    width: 100%;
+    height: 246px;
+}
+
+.main--savedMemesFlex { /*flex box for meme component */
+    display: flex;
+    grid-gap: 10px;
+    flex-wrap: wrap;
+}
+
+.main--saveMemeTitle {
+    text-align: center;
+}
+
+.meme-app {
+    max-height: 850px;
+}
