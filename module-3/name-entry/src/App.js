@@ -4,7 +4,7 @@ import './App.css';
 export default function App() {
   const [names, setName] = React.useState({
     preview: "",
-    nameList: ["1", "2", "3"]
+    nameList: []
   })
 
   function handleChange(event) {
