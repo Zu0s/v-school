@@ -14,13 +14,14 @@ export default function Badge(props) {
     const phoneNumber = addDashes(props.info.phone) // adds dashes
 
     return(
-        <div className="badge-grid">
-            <p>{`Name: ${props.info.firstName} ${props.info.lastName}`}</p>
-            <p>{`Phone: ${phoneNumber}`}</p>
-            <p>{`Place of birth: ${props.info.placeOfBirth}`}</p>
-            <p>{`Favorite food: ${props.info.favoriteFood}`}</p>
-            <p>{`Email: ${props.info.email}`}</p>
-            <p>{props.info.randomInfo}</p>
+        <div className="badge--grid">
+            <div className="badge--title">Badge: </div>
+            <p className="badge--name left">{`Name: ${props.info.firstName} ${props.info.lastName}`}</p>
+            <p className="badge--phone right">{`Phone: ${phoneNumber}`}</p>
+            <p className="badge--pob left">{`Place of birth: ${props.info.placeOfBirth}`}</p>
+            <p className="badge--favFood right">{`Favorite food: ${props.info.favoriteFood}`}</p>
+            <p className="badge--email left">{`Email: ${props.info.email}`}</p>
+            <p className="badge--randomInfo">{props.info.randomInfo}</p>
         </div>
     )
 }

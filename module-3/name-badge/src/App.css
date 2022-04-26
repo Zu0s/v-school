@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+  }
+  
+  body {
+      padding:10px 100px;
+      background-color: #ecececce;
+  }
+
+  /* MAIN */
+  .main--formGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 2px solid black;
+    border-radius: 6px;
+    grid-gap: 10px;
+    padding-top: 40px;
+    background-color: white;
+  }
+
+  input, textarea {
+        border: 2px solid black;
+        padding: 4px;
+  }
+
+  .left {
+        grid-column: 1/4;
+        margin-left: 40px;
+  }
+
+  .right {
+        grid-column: 4/8;
+        margin-right: 40px;
+  }
+
+  .main--randomInfo {
+        grid-column: 1/8;
+        padding: 5px;
+        height: 100px;
+        margin: 0px 40px;
+  }
+
+  .main--submit {
+      grid-column: 3/5;
+      padding: 20px;
+      border-radius: 8px;
+  }
+
+  /* COMPONENT */
+
+.badge--grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 2px solid black;
+    border-radius: 6px;
+    grid-gap: 10px;
+    background-color: white;
+}
+
+.badge--title {
+    color: white;
+    border-radius: 3px;
+    padding-left: 17px;
+    padding-top: 7px;
+    font-size: 20px;
+    grid-column: 1/8;
+    width: 98.4%;
+    height: 50px;
+    background-color: grey;
+}
+
+
+.badge--randomInfo {
+    margin: 0px 40px;
+    margin-bottom: 40px;
+    grid-column: 1/8;
+    padding: 5px;
+    height: 100px;
+    border: 2px solid black;
+}

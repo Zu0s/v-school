@@ -86,9 +86,10 @@ export default function App() {
   
   return (
     <div className="App">
-      <div className="formGrid">
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form onSubmit={handleSubmit} className="main--formGrid">
           <input 
+            className= "main--firstName left"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -96,6 +97,7 @@ export default function App() {
             onChange={handleChange}
           />
           <input 
+            className= "main--lastName right"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -103,13 +105,15 @@ export default function App() {
             onChange={handleChange}
           />
           <input
+            className= "main--Email left"
             type="text" 
             name="email"
             placeholder="Email"
             value={badge.formData.email}
             onChange={handleChange}
           />
-          <input 
+          <input
+            className= "main--pob right" 
             type="text"
             name="placeOfBirth"
             placeholder="Place Of Birth"
@@ -117,6 +121,7 @@ export default function App() {
             onChange={handleChange}
           />
           <input 
+            className= "main--phone left"
             type="number"
             name="phone"
             placeholder="Phone"
@@ -124,6 +129,7 @@ export default function App() {
             onChange={handleChange}
           />
           <input 
+            className= "main--favFood right"
             type="text"
             name="favoriteFood"
             placeholder="Favorite Food"
@@ -132,13 +138,15 @@ export default function App() {
           />
 
           <textarea 
+            className= "main--randomInfo"
             name="randomInfo"
-            placeholder="Information you wish to tell"
+            placeholder="Tell me about yourself"
             value={badge.formData.randomInfo}
             onChange={handleChange}
           />
 
           <input 
+          className="main--submit"
             type="submit"
             value="Submit"
           />
