@@ -30,6 +30,7 @@ function encrypt() {
 
     const newString = editedInput.join()
     const commaRemoved = newString.replaceAll(',', '')
+    console.log("")
     console.log(commaRemoved)
 }
 encrypt()
