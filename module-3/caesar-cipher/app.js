@@ -19,15 +19,10 @@ function encrypt() {
         if (editedInput[i] === ' ' ) {
             shiftedLetter = ' '
         } else {
-            // shiftIndex <= 25 ? shiftedLetter = alphabet[shiftIndex] : shiftIndex = shiftIndex - 26; shiftedLetter = alphabet[shiftIndex]
-
             if (shiftIndex <= 25) {
                 shiftedLetter = alphabet[shiftIndex] 
             } else {
-                while(shiftIndex > 25) {
-                    shiftIndex = shiftIndex - 26
-                }
-
+                while(shiftIndex > 25) { shiftIndex = shiftIndex - 26 } // just allows you input big numbers
                 shiftedLetter = alphabet[shiftIndex]
             }
         }
