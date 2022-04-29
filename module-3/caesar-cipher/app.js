@@ -6,14 +6,11 @@ var shift = parseInt(readline.question('How many letters would you like to shift
 
 // const newInput
 function encrypt() {
-    let editedInput = [...input]; // change
-    console.log(editedInput)
-
+    let editedInput = [...input]
     
     for (var i = 0; i < editedInput.length; i++) {
         
         let shiftIndex = alphabet.indexOf(editedInput[i]) + shift
-        console.log(shiftIndex)
         let shiftedLetter
 
         if (editedInput[i] === ' ' ) {
@@ -33,7 +30,6 @@ function encrypt() {
 
     const newString = editedInput.join()
     const commaRemoved = newString.replaceAll(',', '')
-
     console.log(commaRemoved)
 }
 encrypt()
