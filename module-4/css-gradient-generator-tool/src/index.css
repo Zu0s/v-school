@@ -1,0 +1,40 @@
+body {
+  margin: 10px 160px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.grid--left {
+  grid-column: 1/2;
+  border: 2px solid black;
+  width: 100%;
+  /* padding: 10px; */
+}
+
+.grid--right {
+  grid-column: 2/3;
+  border: 2px solid black;
+  width: 100%;
+  padding: 10px;
+}
+
+.colorBox {
+  margin: 10px;
+  width: 95.3%;
+  height: 200px;
+  border: 1px solid black;
+}
+
+textarea {
+  margin: 10px;
+  margin-top: 0px;
+  font-size: 15px;
+  width: 502px;
+  height: 104px;
+  background-color: rgba(51, 50, 50, 0.87);
+  color:rgb(128, 207, 207);
+}
