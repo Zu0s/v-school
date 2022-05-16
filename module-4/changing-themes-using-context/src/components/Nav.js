@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { ThemeContext } from "../themeContext"
 
-export default function Nav(props) {
+export default function Nav() {
     const {color} = useContext(ThemeContext)
     
     return(

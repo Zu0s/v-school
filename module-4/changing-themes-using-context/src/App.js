@@ -4,7 +4,7 @@ import Main from "./components/Main"
 import Footer from "./components/Footer"
 import { ThemeContextProvider } from "./themeContext"
 
-export default function App(props) {
+export default function App() {
   return (
     <>
     <ThemeContextProvider>
