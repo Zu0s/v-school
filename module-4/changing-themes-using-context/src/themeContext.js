@@ -6,16 +6,19 @@ function ThemeContextProvider(props){
 
     const [color, setColor] = useState("dark")
 
-    // const toggleTheme = () => {
-    //     setColor(prevColor => prevColor === "dark" ? "light" : "dark")
-    // }
-
-    function toggleTheme(props) {
+    const toggleTheme = () => {
         setColor(prevColor => prevColor === "dark" ? "light" : "dark")
     }
 
+    // function toggleTheme(props) {
+    //     setColor(prevColor => prevColor === "dark" ? "light" : "dark")
+    // }
+
     return(
-        <ThemeContextProvider value={{ color, toggleTheme }}>
+        <ThemeContextProvider value={{
+             color, 
+             toggleTheme 
+        }}>
             {props.children}
         </ThemeContextProvider>
     )

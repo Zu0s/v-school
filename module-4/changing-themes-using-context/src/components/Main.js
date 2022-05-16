@@ -8,7 +8,7 @@ export default function Main(props) {
     return(
         <main className={`${color}-theme-main`}>
             <h1>Click the button to toggle the Light theme!</h1>
-            <button onClick={toggleTheme}>Toggle Theme</button>
+            <button onClick={toggleTheme} className={`${color}-theme-button`}>Toggle Theme</button>
         </main>
     )
 }

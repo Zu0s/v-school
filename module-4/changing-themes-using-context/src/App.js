@@ -6,13 +6,11 @@ import { ThemeContextProvider } from "./themeContext"
 
 export default function App() {
   return (
-    <>
     <ThemeContextProvider>
         <Nav />
         <Main />
         <Footer />
     </ThemeContextProvider>
-    </>
   );
 }
 
