@@ -15,12 +15,12 @@ function ThemeContextProvider(props){
     // }
 
     return(
-        <ThemeContextProvider value={{
+        <ThemeContext.Provider value={{
              color, 
              toggleTheme 
         }}>
             {props.children}
-        </ThemeContextProvider>
+        </ThemeContext.Provider>
     )
 }
 
