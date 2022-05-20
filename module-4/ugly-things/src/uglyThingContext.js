@@ -7,9 +7,12 @@ function UglyThingContextProvider(props) {
 
     /* User Inputs */
     const[uglyThing, setUglyThing] = useState({
-        title: "",
-        imgUrl: "",
-        description: ""
+        _id: true,
+        savedItem: {
+            title: "",
+            imgUrl: "",
+            description: ""
+        }
     })
 
     const [uglyThingList, setUglyThingList] = useState([])
@@ -18,26 +21,45 @@ function UglyThingContextProvider(props) {
     const handleChange = (e) => { 
         const {name, value} = e.target 
 
+
         return setUglyThing(prevUglyThing => {
+            let currentName = prevUglyThing.savedItem.name
             return {
                 ...prevUglyThing,
-                [name]: value
+                [currentName]: value
             }
         })
     }
 
     const handleSubmit = (e) => { // is working
         e.preventDefault()  
-            axios.post("https://api.vschool.io/brandonbutkovich/thing", uglyThing)
-                .then(response => console.log(response.data))
-                .catch(error => console.log(error))
+                if(uglyThing.isEdit) {
+                    axios.post("https://api.vschool.io/brandonbutkovich/thing", uglyThing.savedItem)
+                    .then(response => console.log(response.data))
+                    .catch(error => console.log(error))
+                } else {
+                    axios.put(`https://api.vschool.io/brandonbutkovich/thing${uglyThing._id}`, uglyThing.savedItem)
+                }
             
-            return setUglyThing({
-                title: "",
-                imgUrl: "",
-                description: ""
+            return setUglyThing(() => {
+                return {
+                    isEdit: true,
+                    savedItem:{
+                        title: "",
+                        imgUrl: "",
+                        description: ""
+                    }
+                }
             })
     }
+
+    // const handleEdit = (e) => { // need to give the button the props
+    //     // const {title, imgUrl, description, _id } = e
+
+    //     console.log(`before changed state ${uglyThing}`)
+    //     setUglyThing("This isn't working even")
+    //     console.log(`after changed state ${uglyThing}`)
+    // }
 
     useEffect(() => { 
         axios.get("https://api.vschool.io/brandonbutkovich/thing")
