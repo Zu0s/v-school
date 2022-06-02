@@ -1,0 +1,122 @@
+/* General */
+* {
+    margin: 0px;
+}
+
+img {
+    height: 178px;
+    width: 296px;
+    text-align: center;
+}
+
+/* Components */
+    /* Nav */
+        /* need the required font for this project */
+        .nav {
+            text-align: center;
+            background: #958679;
+            padding: 10px;
+        }
+        
+        .nav--title {
+            font-size: 40px;
+            padding-top: 11px;
+            padding-bottom: 6px;
+            color: white;
+        }
+
+        .nav--link {
+            list-style: none;
+            display: flex;
+            padding: 0px 10px;
+        }
+
+        .nav--link > li{
+            font-size: 32px;
+            margin-right: auto;
+        }
+
+        .nav--link > li > a {
+            text-decoration: none;
+            color: white;
+            padding-left: 21px;
+        }
+
+         /* .nav--link > li > a:hover {  only works on desktop so move it there 
+            color: green;
+        }  */
+
+    /* footer */
+        /* need the copyright symbol for the footer */
+        .footer {
+            position: relative;
+            width: 100%;
+            bottom: 0px;
+            background-color: #4A433D;
+            padding: 14px;
+            text-align: center;
+        }
+
+/* pages */ 
+
+    /* Home */
+        .home {
+            text-align: center;
+        }
+        .home--p {
+            font-size: 35px;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+
+    /* Color. Do i need the pattern section? probably not */
+
+   
+
+    .grid {
+        display: grid;
+        grid-template-columns: 16% 1fr 16%;
+        grid-template-rows: 50px 300px;
+        grid-gap: 30px;
+        margin-top: 10%;
+    }
+
+    .color, pattern {
+        position: relative;
+        height: 100%;
+    }
+
+    .button {
+        grid-column: 2/3;
+        border-radius: 10px;
+        text-align: center;
+        display: block;
+        font-size: 20px;
+        padding: 9px 17px;
+
+    }
+    .textarea {
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px;
+        grid-column: 1/4;
+        font-size: 20px;
+    }   
+
+/* ---------------------DESKTOP----------------------------- */
+/* Components */
+    /* Nav */
+
+    /* footer */
+
+
+/* pages */ 
+
+    /* Home */
+
+
+    /* Color */
+
+
+    /* Pattern */
