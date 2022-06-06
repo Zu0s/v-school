@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ApiContext } from "../apiContext";
 
 export default function Color(props) {
+
+    const {colors, changeColor} = useContext( ApiContext )
+
+    const {title, imgUrl, sepColors, author} = colors // deconstruct colors
+
+
+    const hexedColors = sepColors.map(current => {
+        return `#${current}  `
+    })
     return(
-        <div className="color grid">
-            <button className="color--button button">Random Color</button>
-            <textarea value="random colors here" readOnly className="color-textarea textarea"/>
+        <div className="cp--grid cp--flex">
+            <button onClick={changeColor} className="cp--button button">Random Color</button>
+            <h1 className="cp--title">Title: </h1>
+            <h2 className="cp--subTitle cp--focus">{title}</h2>
+            <img src={imgUrl} alt="shows the pallete of cps" className="cp--img"/>
+            <textarea value={hexedColors} readOnly className="cp--textarea"/> 
+            <h3 className="cp--author">By: <span className="cp--focus">{author}</span></h3> 
         </div>
     )
 }

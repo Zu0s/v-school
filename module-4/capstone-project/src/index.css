@@ -3,19 +3,22 @@
     margin: 0px;
 }
 
-img {
-    height: 178px;
-    width: 296px;
-    text-align: center;
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
 }
+
+/* need the required font for this project */
+
 
 /* Components */
     /* Nav */
-        /* need the required font for this project */
         .nav {
             text-align: center;
             background: #958679;
             padding: 10px;
+            width: 1fr;
         }
         
         .nav--title {
@@ -29,31 +32,38 @@ img {
             list-style: none;
             display: flex;
             padding: 0px 10px;
+            padding-left: 9%;
         }
 
         .nav--link > li{
             font-size: 32px;
             margin-right: auto;
+            display: flex;
+            align-items: center;
         }
 
         .nav--link > li > a {
             text-decoration: none;
             color: white;
-            padding-left: 21px;
         }
 
-         /* .nav--link > li > a:hover {  only works on desktop so move it there 
-            color: green;
-        }  */
-
     /* footer */
-        /* need the copyright symbol for the footer */
+        /* 
+            need the copyright symbol for the footer.
+            the footer being planted with bottom 0px only works with color, pattern and not with home. dont know how to do it consistantly with all 
+        */
+
         .footer {
-            position: relative;
-            width: 100%;
-            bottom: 0px;
+            /* positon of the footer */
+            flex-shrink: 0;
+            position: sticky;
+            left: 0px; right: 0px; bottom: -1;
+
+            /* pure look of footer */
+            margin-top: 15px;
             background-color: #4A433D;
-            padding: 14px;
+            width: 100%;
+            padding: 20px 0px;
             text-align: center;
         }
 
@@ -62,29 +72,38 @@ img {
     /* Home */
         .home {
             text-align: center;
+            display: grid;
+            grid-template-columns: 10% 1fr 10%;
+            flex: 1 0 auto;
         }
+
         .home--p {
+            grid-column: 2/3;
             font-size: 35px;
-            text-align: center;
             padding: 25px 10px;
         }
 
+        .img {
+            border-radius: 2%;
+            grid-column: 2/3;
+            height: 178px;
+            width: 296px;
+        }
 
-    /* Color. Do i need the pattern section? probably not */
 
-   
+    /* Color. nee*/
 
-    .grid {
-        display: grid;
-        grid-template-columns: 16% 1fr 16%;
-        grid-template-rows: 50px 300px;
-        grid-gap: 30px;
-        margin-top: 10%;
+    .cp--flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        height: 80vh;
     }
+    
 
-    .color, pattern {
-        position: relative;
-        height: 100%;
+    .color, .patterns{
+        height: 80vh;
     }
 
     .button {
@@ -94,29 +113,150 @@ img {
         display: block;
         font-size: 20px;
         padding: 9px 17px;
-
+        width: 50%;
+        align-self: center;
+        margin-top: 40px;
     }
-    .textarea {
-        border: 1px solid black;
-        border-radius: 5px;
-        margin: 10px;
-        grid-column: 1/4;
-        font-size: 20px;
-    }   
+    
+    .cp--title {
+        grid-column: 1/3;
+        padding-left: 20px;
+        margin-top: 20px;
+    }
+    .cp--subTitle {
+        padding-left: 60px;
+        font-size: 30px;
+    }
+
+    .cp--focus {
+        font-style: italic;
+    }
+
+    .cp--textarea {
+        grid-column: 2/3;
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .cp--author {
+        grid-column: 2/3;
+        text-align: right;
+        margin-right: 20px;
+        font-style: italic;
+    }
+
+    .cp--img {
+        width: 325px;
+        align-self: center;
+        margin-top: 20px;
+    }
 
 /* ---------------------DESKTOP----------------------------- */
+@media screen and (min-width: 800px) {
 /* Components */
     /* Nav */
+    .nav {
+        display: flex;
+    }
+
+    .nav--title {
+        font-size: 94px;
+        margin-left: 7%;
+    }
+
+    .nav--link {
+        margin-left: auto;
+        margin-right: 7%;
+    }
+
+    .nav--link > li {
+        font-size: 60px;
+        margin-right: 100px;
+    }
+
 
     /* footer */
 
+    .footer {
+        position: relative;
+        left: 0px; right: 0px; bottom: 0;
+        font-size: 40px;
+    }
+
 
 /* pages */ 
-
     /* Home */
 
+    .home {
+        height: 100vh;
+        margin-top: 50px;
+        grid-template-columns: 10% 1fr 1fr 10%;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 15px;
+    }
 
-    /* Color */
+    .home--p {
+        grid-column: 3/4;
+        grid-row: 2/4;
+        font-size: 60px;
+        margin-left: 10px;
+    }
+    
+    .img {
+        height: 430px;
+        width: 700px;
+    }
+    .home--img1 {
+        grid-row: 1/3;
+    }
+    .home--img2 {
+        grid-row: 3/5;
+    }
 
+    /* Color & Pattern */
 
-    /* Pattern */
+    .cp--grid {
+        display: grid;
+        grid-template-columns: 10% 1fr 1fr 1fr 1fr 10%;
+        grid-template-rows:1fr 1fr 1fr 1fr ;
+        height: 100vh;
+    }
+
+    .button {
+        grid-column: 3/5;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        font-size: 30px;
+    }
+    .cp--title {
+        grid-column: 1/3;
+        text-align: right;
+        font-size: 45px;
+    }
+    .cp--subTitle {
+        margin-top: 20px;
+        font-size: 30px;
+        font-size: 45px;
+    }
+    .cp--textarea {
+        grid-column: 4/5;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .cp--author {
+        grid-column: 5/6;
+        grid-row: 4/5;
+        font-size: 35px;
+    }
+
+    .cp--img {
+        margin-top: 0px;
+        width: 325px;
+        grid-column: 3/4;
+        width: 500px;
+        height: 300px;
+    }
+}
+

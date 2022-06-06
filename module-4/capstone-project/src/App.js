@@ -2,6 +2,8 @@ import React from "react"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
+import { ApiContextProvider } from "./apiContext";
+
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
 import Color from "./pages/Color";
@@ -10,6 +12,7 @@ import Pattern from "./pages/Pattern";
 function App() {
   return (
     <Router>
+    <ApiContextProvider>
       <Nav />
 
       <Routes>
@@ -19,6 +22,7 @@ function App() {
       </Routes>
 
       <Footer />
+    </ApiContextProvider>
     </Router>
   );
 }
