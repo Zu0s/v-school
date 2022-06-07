@@ -30,7 +30,7 @@ export default function Thing(props) {
             <h3>{description}</h3>
             <button onClick={toggleEdit}>Edit</button>
             <button onClick={() => {handleDelete(_id)}}>Delete</button>
-            {isEdit && <Form submit={() => handleEdit(_id)} />}
+            {isEdit && <Form submit={(event) => handleEdit(event, _id)} />}
             <hr />
         </div>
     )
