@@ -72,7 +72,7 @@ function UglyThingContextProvider(props) {
             const deletedItem = uglyThingList.findIndex(item => item._id === id)
             setUglyThingList(prevUglyThingList => {
                 const list = prevUglyThingList
-                list.splice(deletedItem)
+                list.splice(deletedItem, 1)
                 return[...list]
             })
         }) // HOW TO TOGGLE RELOAD
