@@ -50,19 +50,32 @@ function UglyThingContextProvider(props) {
 
 
     /* this and handle edit need to reload the page on click but past that its good  */
-    const handleEdit = (event, _id) => {
+    const handleEdit = (event, id) => {
         event.preventDefault()
 
-        console.log(`Please work. Id equal to: ${_id}`)
-            axios.put(`https://api.vschool.io/brandonbutkovich/thing/${_id}`, uglyThing.savedItem)
-                .then(resetUglyThing())
+            axios.put(`https://api.vschool.io/brandonbutkovich/thing/${id}`, uglyThing.savedItem)
+                .then(res => {
+                    const editedItem = uglyThingList.findIndex(item => item._id === id)
+                    setUglyThingList(prevUglyThingList => {
+                        const list = prevUglyThingList
+                        list[editedItem] = res.data
+                        return[...list]
+                    })
+                    resetUglyThing()
+                })
                 .catch(err => console.log(err))
     }
 
-    const handleDelete = (_id) => {
-        console.log(_id)
-        axios.delete(`https://api.vschool.io/brandonbutkovich/thing/${_id}`)
-        .then(resetUglyThing()) // HOW TO TOGGLE RELOAD
+    const handleDelete = (id) => {
+        axios.delete(`https://api.vschool.io/brandonbutkovich/thing/${id}`)
+        .then(() => {
+            const deletedItem = uglyThingList.findIndex(item => item._id === id)
+            setUglyThingList(prevUglyThingList => {
+                const list = prevUglyThingList
+                list.splice(deletedItem)
+                return[...list]
+            })
+        }) // HOW TO TOGGLE RELOAD
         .catch(err => console.log(err))
     }
 

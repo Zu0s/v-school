@@ -12,8 +12,9 @@ export default function Thing(props) {
 
     const toggleEdit = () => {
         setIsEdit(prevState => !prevState)
-        setUglyThing(() => {
+        setUglyThing(prevUglyThings => {
             return {
+                ...prevUglyThings,
                 savedItem:{
                     title: title,
                     imgUrl: imgUrl,
