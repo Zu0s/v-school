@@ -3,30 +3,30 @@ import { UglyThingContext } from "../uglyThingContext";
 
 export default function Form(props) {
 
-    const { uglyThing, handleChange, handleSubmit } = useContext(UglyThingContext)
+    const {uglyThing, handleChange } = useContext(UglyThingContext)
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.submit}>
             <input
                 name="title"
                 type="text"
                 placeholder="Title"
                 onChange={handleChange}
-                value={uglyThing.title}
+                value={uglyThing.savedItem.title}
             />
             <input
                 name="imgUrl"
                 type="text"
                 placeholder="Image Url"
                 onChange={handleChange}
-                value={uglyThing.imgUrl}
+                value={uglyThing.savedItem.imgUrl}
             />
             <input
                 name="description"
                 type="text"
                 placeholder="Description"
                 onChange={handleChange}
-                value={uglyThing.description}
+                value={uglyThing.savedItem.description}
             />
             <button>Submit</button>
         </form>

@@ -7,7 +7,6 @@ function UglyThingContextProvider(props) {
 
     /* User Inputs */
     const[uglyThing, setUglyThing] = useState({
-        _id: true,
         savedItem: {
             title: "",
             imgUrl: "",
@@ -21,45 +20,75 @@ function UglyThingContextProvider(props) {
     const handleChange = (e) => { 
         const {name, value} = e.target 
 
-
-        return setUglyThing(prevUglyThing => {
-            let currentName = prevUglyThing.savedItem.name
+        setUglyThing(prevUglyThing => {
+            // let currentName = prevUglyThing.savedItem
             return {
                 ...prevUglyThing,
-                [currentName]: value
+                savedItem: {
+                    ...prevUglyThing.savedItem,
+                    [name]: value
+                }
             }
         })
     }
 
-    const handleSubmit = (e) => { // is working
-        e.preventDefault()  
-                if(uglyThing.isEdit) {
-                    axios.post("https://api.vschool.io/brandonbutkovich/thing", uglyThing.savedItem)
-                    .then(response => console.log(response.data))
-                    .catch(error => console.log(error))
-                } else {
-                    axios.put(`https://api.vschool.io/brandonbutkovich/thing${uglyThing._id}`, uglyThing.savedItem)
-                }
-            
-            return setUglyThing(() => {
-                return {
-                    isEdit: true,
-                    savedItem:{
-                        title: "",
-                        imgUrl: "",
-                        description: ""
-                    }
-                }
-            })
+    const handleSubmit = (e) => {
+        e.preventDefault();
+            axios.post("https://api.vschool.io/brandonbutkovich/thing", uglyThing.savedItem)
+                .then(res => {
+                    console.log(res.data)
+                    resetUglyThing()
+
+                    setUglyThingList(prevState => {
+                        return [...prevState, res.data]
+                    })
+                })
+                .catch(error => console.log(error))
+                    
+
     }
 
-    // const handleEdit = (e) => { // need to give the button the props
-    //     // const {title, imgUrl, description, _id } = e
+    // const handleEdit = (_id) => { 
+    //     return event => {
+    //         event.preventDefault();
 
-    //     console.log(`before changed state ${uglyThing}`)
-    //     setUglyThing("This isn't working even")
-    //     console.log(`after changed state ${uglyThing}`)
+    //         axios.put(`https://api.vschool.io/brandonbutkovich/thing/${_id}`, uglyThing.savedItem)
+    //             .then(resetUglyThing())
+    //             .catch(err => console.log(err))
+    //     }
     // }
+
+    const handleEdit = _id => event => {
+        event.preventDefault()
+
+        console.log(`Please work. Id equal to: ${_id}`)
+            axios.put(`https://api.vschool.io/brandonbutkovich/thing/${_id}`, uglyThing.savedItem)
+                .then(resetUglyThing())
+                .catch(err => console.log(err))
+    }
+
+
+
+    const handleDelete = (_id) => {
+        console.log(_id)
+        axios.delete(`https://api.vschool.io/brandonbutkovich/thing/${_id}`)
+        .then(res => console.log(res)) // HOW TO TOGGLE RELOAD
+        .catch(err => console.log(err))
+    }
+
+    const resetUglyThing = () => { 
+        setUglyThing(() => {
+            return {
+                isEdit: true,
+                savedItem:{
+                    title: "",
+                    imgUrl: "",
+                    description: ""
+                }
+            }
+        })
+    }
+
 
     useEffect(() => { 
         axios.get("https://api.vschool.io/brandonbutkovich/thing")
@@ -71,7 +100,7 @@ function UglyThingContextProvider(props) {
     }, []) // I HAVE NO IDEA WHAT TO DO TO CHOOSE WHEN I NEED TO RE RENDER THE LIST 
 
     return(
-        <UglyThingContext.Provider value = {{ uglyThing, uglyThingList, handleChange, handleSubmit }}>
+        <UglyThingContext.Provider value = {{ uglyThing, uglyThingList, handleChange, handleEdit, handleSubmit, handleDelete, setUglyThing }}>
             {props.children}
         </UglyThingContext.Provider>
     )

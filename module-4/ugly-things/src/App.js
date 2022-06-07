@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
-import { UglyThingContextProvider, UglyThingContext } from "./uglyThingContext";
+import { UglyThingContext } from "./uglyThingContext";
 
 import Form from "./components/Form";
 import Thing from "./components/Thing";
 
 export default function App(props) {
 
-  const {uglyThingList} = useContext(UglyThingContext)
+  const {uglyThingList, handleSubmit} = useContext(UglyThingContext)
 
   const thingsList = uglyThingList.map(currentThing => {
     return <Thing 
@@ -17,7 +17,7 @@ export default function App(props) {
 
   return (
     <main className="main">
-        <Form />
+        <Form submit={handleSubmit} />
         {thingsList} 
     </main>
   );
