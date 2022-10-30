@@ -1,15 +1,33 @@
 {
+  
   "name": "first-server",
+  
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  
+  "main": "server.js",
+  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  
+    
+  "test": "echo \"Error: no test specified\" && exit 1"
+  
   },
+  
   "keywords": [],
-  "author": "Zu0s",
+  
+  "author": "",
+  
   "license": "ISC",
+  
+  "description": "",
+  
   "dependencies": {
-    "express": "^4.18.1"
+  
+    
+  "express": "^4.18.2",
+  
+    
+  "uuid": "^9.0.0"
+  
   }
 }
