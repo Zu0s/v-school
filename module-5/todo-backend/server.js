@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const { v4: uuidv4 } = require ('uuid')
 
+app.use(express.json())
+
 // Fake Data //
 const todos = [
     {
@@ -37,6 +39,18 @@ app.route('/:todoId')
 
 .get((req, res) => {  // get one
     res.send(todos.find(todo => todo._id === req.params.todoId)) 
+})
+
+.put((req, res) => {
+    const todoIndex = todos.findIndex(todo => todo._id === req.params.todoId)
+    console.log(req.body)
+    res.send( Object.assign(todos[todoIndex], req.body) )
+})
+
+.delete((req, res) => {
+    const todoIndex = todos.findIndex(todo => todo._id === req.params.todoId)
+    todos.splice(todoIndex, 1)
+    res.send('Succesfully deleted')
 })
 
 
