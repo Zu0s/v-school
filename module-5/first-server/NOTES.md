@@ -74,3 +74,11 @@
 
         # the 'next' function 
             # Moves on to the middlewarew in line on our server
+
+    #Logger
+        morgan - npm install morgan
+
+    # Connecting the Front-end to the Back-end
+
+        # Folder Structure
+        # Proxy

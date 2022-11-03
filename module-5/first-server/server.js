@@ -1,7 +1,9 @@
 // First Express Server 
 const express = require ("express")
 const app = express()
-app.use(express.json()) // look for a request and transform it from JSON
+const morgan = require('morgan')
+app.use(express.json())
+app.use(morgan('dev'))
 
 // Routes //
 app.use('/movies', require("./routes/movieRouter.js"))
