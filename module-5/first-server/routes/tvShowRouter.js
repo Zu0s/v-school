@@ -10,12 +10,16 @@ const tvShows = [
     {title: "Assassination Classroom",_id: uuidv4(), },
 ]
 
-tvShowRouter.get('/:tvShowId', (req, res) => {
+
+tvShowRouter.route('/:tvShowId')
+
+.get((req, res) => {
     foundTvShow = tvShows.find(tvShow => tvShow._id === req.params.tvShowId)
     res.send(`${foundTvShow.title} is free to watch with a prime membership`)
 })
 
-tvShowRouter.delete('/:tvShowId', (req, res) => {
+
+.delete((req, res) => {
     const tvShowIndex = tvShows.findIndex(tvShow => tvShow._id === req.params.tvShowId)
     tvShows.splice(tvShowIndex, 1)
     res.send('succesfully delete the tv show')

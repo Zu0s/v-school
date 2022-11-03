@@ -11,20 +11,21 @@ const movies = [
 
 // Routes //
 
-// GET one
-movieRouter.get('/:movieId', (req, res) => { 
-    const foundMovie = movies.find(movie => movie._id === req.params.movieId)
-    res.send(`The movie you have selected is ${foundMovie.title}`)
-})
-
 movieRouter.get("/search/genre", (req, res) => {
     const genre = req.query.genre
     const filteredMovies = movies.filter(movie => movie.genre === genre)
     res.send(filteredMovies)
 })
 
+movieRouter.route('/:movieId')
+
+.get((req, res) => { 
+    const foundMovie = movies.find(movie => movie._id === req.params.movieId)
+    res.send(`The movie you have selected is ${foundMovie.title}`)
+})
+
 // DELETE ONE 
-movieRouter.delete('/:movieId', (req, res) => {
+.delete((req, res) => {
     const movieId = req.params.movieId
     const movieIndex = movies.findIndex(movie => movie._id === movieId)
     movies.splice(movieIndex, 1)
@@ -32,7 +33,7 @@ movieRouter.delete('/:movieId', (req, res) => {
 })
 
 // update
-movieRouter.put('/:movieId', (req, res) => {
+.put((req, res) => {
     const movieId = req.params.movieId
     const movieIndex = movies.findIndex(movie => movie._id === movieId)
     const updatedMovie = Object.assign(movies[movieIndex], req.body)
