@@ -47,7 +47,7 @@ movieRouter.route('/')
 .post((req, res) => {
     req.body._id = uuidv4()
     movies.push(req.body)
-    res.send (`Successfully added ${req.body.title} to the database`)
+    res.send (req.body)
 })
 
 
