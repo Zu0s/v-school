@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Bounty(props) {
-    const { firstName, lastName, living, bountyAmount, type, _id} = props
+    const { firstName, lastName, bountyAmount, type} = props
     
     return(
         <div>

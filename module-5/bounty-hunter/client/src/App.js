@@ -1,14 +1,18 @@
 import React, { useContext } from "react"
-import Bounty from "./components/Bounty.js"
+import Nav from "./components/Nav.js";
+import Main from "./components/Main.js";
+import Footer from "./components/Footer.js";
 
-import { ApiContext} from "./apiContext.js";
+import { ApiContextProvider } from "./apiContext.js";
 
 export default function App() {
-  const {bounties, setBounties} = useContext(ApiContext) // using bounties state from context
-
   return (
     <div>
-      {bounties.map(bounty => <Bounty {...bounty} key={bounty._id}/>)}
+      <ApiContextProvider>
+        <Nav />
+        <Main />
+      </ApiContextProvider>
+      <Footer />
     </div>
   );
 }
