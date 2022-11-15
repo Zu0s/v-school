@@ -8,7 +8,7 @@ export default function BountyForm(props) {
         bountyAmount: 0,
         type: ""
     }
-    const [info, setInfo] = useState({initInfo})
+    const [info, setInfo] = useState(initInfo)
 
     function handleChange (e) {
         const {name, value} = e.target
@@ -17,12 +17,12 @@ export default function BountyForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        // apply the prop for activating the crud request
+        props.submit(info, props._id) // should send the info to whatever function, update or post, i need it to use 
         setInfo(initInfo)
     }
 
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
                 type='text' 
                 name='firstName' 
@@ -53,10 +53,11 @@ export default function BountyForm(props) {
             <input 
                 type='text'
                 name='type' 
-                value={info.lastName} 
+                value={info.type} 
                 onChange={handleChange} 
-                placeholder='Last Name'>
+                placeholder='type'>
             </input> 
+            <button>{ props.btnText }</button>
         </form>
     )
 }

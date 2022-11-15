@@ -32,7 +32,7 @@ bountyRouter.route('/') // guess I cant use .route because parameters wont pass 
 .post((req, res) => {
     req.body._id = uuidv4()
     bounties.push(req.body)
-    res.send(`succesfully added a bounty on the ${req.body.type}, ${req.body.firstName} ${req.body.lastName} for ${req.body.bountyAmount}`)
+    res.send(req.body)  // Should send the new post request into the id
 })
 
 bountyRouter.route('/:bountyId')
