@@ -5,8 +5,6 @@ const ApiContext = createContext()
 
 function ApiContextProvider(props) {
     const [bounties, setBounties] = useState([])
-
-    console.log(bounties)
     
     useEffect(() => {
         axios.get('/bounties')
@@ -16,8 +14,7 @@ function ApiContextProvider(props) {
 
     function addBounty(bountyData) {
         axios.post('/bounties', bountyData)
-            .then(res => setBounties(prevBounties => [...prevBounties, res.data])) // change state to have the new bounty so no reload needed
-            .catch(err => console.log(err))
+            .then(res => setBounties(prevBounties => [...prevBounties, res.data]))
     }
     
     function deleteBounty(bountyId) {
