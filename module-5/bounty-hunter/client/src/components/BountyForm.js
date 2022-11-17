@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 export default function BountyForm(props) {
     const initInfo = {
-        firstName: "",
-        lastName: "",
-        living: true,
-        bountyAmount: 0,
-        type: ""
+        firstName: props.firstName || "",
+        lastName: props.lastName || "",
+        living: props.living || true,
+        bountyAmount: props.bountyAmount || 0,
+        type: props.type || ""
     }
     const [info, setInfo] = useState(initInfo)
 
@@ -17,13 +17,12 @@ export default function BountyForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        props.submit(info, props._id) // should send the info to whatever function, update or post, i need it to use 
+        props.submit(info, props._id) 
         setInfo(initInfo)
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input 
+        <form onSubmit={ handleSubmit }><input 
                 type='text' 
                 name='firstName' 
                 value={info.firstName} 
