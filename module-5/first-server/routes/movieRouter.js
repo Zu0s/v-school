@@ -19,9 +19,13 @@ movieRouter.get("/search/genre", (req, res) => {
 
 movieRouter.route('/:movieId')
 
-.get((req, res) => { 
+.get((req, res, next) => { 
     const foundMovie = movies.find(movie => movie._id === req.params.movieId)
-    res.send(`The movie you have selected is ${foundMovie.title}`)
+    if(!foundMovie) {
+        const error = new Error("The item was not found.")
+        return next(error)
+    }
+    res.send(foundMovie)
 })
 
 // DELETE ONE 
