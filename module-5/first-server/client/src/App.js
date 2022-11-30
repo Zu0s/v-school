@@ -10,13 +10,13 @@ export default function App() {
     function getMovies() {
         axios.get('/movies')
         .then(res => setMovies(res.data))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.response.data.errMsg))
     }
 
     function addMovie(newMovie) {
         axios.post('/movies', newMovie)
         .then(res => setMovies(prevMovies => [...prevMovies, res.data]))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.response.data.errMsg))
     }
 
     function deleteMovie(movieId) {
@@ -24,7 +24,7 @@ export default function App() {
         .then(res => {
             setMovies(prevMovies => prevMovies.filter(movie => movie._id !== movieId))
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.response.data.errMsg))
     }
 
     function editMovie(updates, movieId) {
@@ -32,7 +32,7 @@ export default function App() {
         .then(res => {
             setMovies(prevMovies => prevMovies.map(movie => movie._id !== movieId ? movie : res.data))
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.response.data.errMsg))
     }
 
     useEffect(() => {

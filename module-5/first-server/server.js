@@ -12,9 +12,10 @@ app.use('/movies', require("./routes/movieRouter.js"))
 
 app.use('/tvShows', require('./routes/tvShowRouter.js'))
 
-// Error handler //
+// Error handler - put above app.listen//
 app.use((err, req, res, next) => {
     console.log(err)
+    return res.send({errMsg: err.message})
 })
 
 //Server Listen //

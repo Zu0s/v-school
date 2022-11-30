@@ -82,3 +82,14 @@
 
         # Folder Structure
         # Proxy
+
+    # Status Codes
+        #200 - succesfull request
+        #201 - Successful Insert
+        #202 - Successful update
+        #401 - unathuorized
+        #404 - Not found
+        #500 - Server Error
+
+        # https://http.cat 
+        

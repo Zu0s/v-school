@@ -13,23 +13,26 @@ const tvShows = [
 
 tvShowRouter.route('/:tvShowId')
 
-.get((req, res) => {
+.get((req, res, next) => {
     foundTvShow = tvShows.find(tvShow => tvShow._id === req.params.tvShowId)
-    res.send(`${foundTvShow.title} is free to watch with a prime membership`)
+    if(!foundTvShow) {
+        const error = new Error(`The item with the id of ${req.params.tvShowId} could not be found`)
+        res.status(500)
+        return next(error)
+    }
+    res.status(200).send(`${foundTvShow.title} is free to watch with a prime membership`)
 })
 
 
 .delete((req, res) => {
     const tvShowIndex = tvShows.findIndex(tvShow => tvShow._id === req.params.tvShowId)
     tvShows.splice(tvShowIndex, 1)
-    res.send('succesfully delete the tv show')
+    res.status(201).send('succesfully delete the tv show')
 })
 
 
 
 tvShowRouter.route('/')
-
-// GET ALL //
 .get((req, res) => {
     res.send(tvShows)
 })
@@ -37,7 +40,7 @@ tvShowRouter.route('/')
 .post((req, res) => {
     req.body._id = uuidv4()
     tvShows.push(req.body)
-    res.send(`Succesfully added ${req.body.title} to the database`)
+    res.status(201).send(`Succesfully added ${req.body.title} to the database`)
 })
 
 module.exports = tvShowRouter
