@@ -92,4 +92,30 @@
         #500 - Server Error
 
         # https://http.cat 
+
+    # Intro to Mongoose
+
+        # npm install mongoose
+
+        # Purpose
+            * Create models
+            * Query data
+
+        # Connect
+
+        mongoose.connect('mongodb://localhost:27017/moviesdb', 
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useCreateIndex: true,
+                useFindAndModify: false
+            }, 
+            () => console.log("Conected to the DB")
+        )
         
+    # Mongoose Schemas
+        * Bluepriunts for our data
+
+    # Mongoose Models
+        *Models have a Name, and a Blueprint (Schema)
+        *Models are used to perform the CRUD operations on the data created with the model
