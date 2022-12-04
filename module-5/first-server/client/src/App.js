@@ -30,7 +30,7 @@ export default function App() {
     function editMovie(updates, movieId) {
         axios.put(`/movies/${movieId}`, updates)
         .then(res => {
-            setMovies(prevMovies => prevMovies.map(movie => movie._id !== movieId ? movie : res.data))
+            return setMovies(prevMovies => prevMovies.map(movie => movie._id !== movieId ? movie : res.data))
         })
         .catch(err => console.log(err.response.data.errMsg))
     }

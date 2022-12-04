@@ -19,9 +19,14 @@ movieRouter.route('/')
 
     // Post
     .post((req, res, next) => {
-        req.body._id = uuidv4()
-        movies.push(req.body)
-        res.status(201).send (req.body)
+        const newMovie = new Movie(req.body)
+        newMovie.save((err, savedMovie) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(savedMovie)
+        })
     })
 
 movieRouter.get("/search/genre", (req, res, next) => {
@@ -39,34 +44,35 @@ movieRouter.route('/:movieId')
 
     // Get One
     .get((req, res, next) => { 
-        const foundMovie = movies.find(movie => movie._id === req.params.movieId)
-        if(!foundMovie) {
-            const error = new Error(`The item with the id ${req.params.movieId} was not found`)
-            res.status(500)
-            return next(error)
-        }
-        res.send(foundMovie)
+        //Doesnt not work for now
+        res.send('not currently active')
     })
 
     // Delete one
     .delete((req, res, next) => {
-        const movieId = req.params.movieId
-        const movieIndex = movies.findIndex(movie => movie._id === movieId)
-        if(!movieIndex) {
-            const error = new Error(`The item with the id ${movieId} was not found`)
-            res.status(500)
-            return next(error)
-        }
-        movies.splice(movieIndex, 1)
-        res.status(200).send('succesfully delete movie')
+        Movie.findOneAndDelete({ _id: req.params.movieId }, (err, deletedItem) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Succesfull deelted item ${deletedItem.title} from the database`)
+        })
     })
 
     // Update
     .put((req, res, next) => {
-        const movieId = req.params.movieId
-        const movieIndex = movies.findIndex(movie => movie._id === movieId)
-        const updatedMovie = Object.assign(movies[movieIndex], req.body)
-        res.status(202).send(updatedMovie)
+        Movie.findOneAndUpdate(
+            { _id: req.params.movieId },// Find this one to update
+            req.body, // update the object with this data
+            { new: true }, // send back the updated version instead of old version
+            (err, updatedMovie) => {
+                if(err) {
+                    res.status(500)
+                    return next(err)
+                }
+                res.status(202).send(updatedMovie)
+            }
+        )
     })
 
 module.exports = movieRouter
