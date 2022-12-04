@@ -12,7 +12,6 @@ movieRouter.route('/')
                 res.status(500)
                 return next(err)
             }
-            console.log('test')
             return res.status(200).send(movies)
         })
     })
@@ -30,14 +29,13 @@ movieRouter.route('/')
     })
 
 movieRouter.get("/search/genre", (req, res, next) => {
-    const genre = req.query.genre
-    if(!genre) {
-        const error = new Error("You must provide a genre")
-        res.status(500)
-        return next(error)
-    }
-    const filteredMovies = movies.filter(movie => movie.genre === genre)
-    res.send(filteredMovies)
+    Movie.find({ genre: req.query.genre }, (err, movies) =>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(movies)
+    })
 })
 
 movieRouter.route('/:movieId')
