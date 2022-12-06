@@ -7,7 +7,7 @@ require('dotenv').config()
 app.use(express.json())
 app.use(morgan('dev'))
 
-// mongoose.set('strictQuery', false)
+mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_URI,  
     () => console.log("Conected to the DB")
 )

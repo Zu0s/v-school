@@ -12,4 +12,4 @@ const inventorySchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('inventorySchema', inventorySchema)
+module.exports = mongoose.model('Inventory', inventorySchema)
