@@ -2,15 +2,15 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express() 
 const morgan = require('morgan')
+require('dotenv').config()
 
 app.use(morgan('dev'))
 app.use(express.json())
 
 mongoose.set('strictQuery', false)
-mongoose.connect('process.env.MONGODB_URI',  
+mongoose.connect(process.env.MONGODB_URI,  
     () => console.log("Conected to the DB")
 )
-
 
 app.use('/bounties', require('./routes/bounties.js'))
 
