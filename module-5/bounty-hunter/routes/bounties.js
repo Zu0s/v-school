@@ -23,7 +23,6 @@ bountyRouter.route('/') // guess I cant use .route because parameters wont pass 
 })
 
 .post((req, res, next) => {
-    
     new Bounty(req.body).save((err, savedBounty) => {
         if(err) {
             res.status(500)
@@ -36,14 +35,27 @@ bountyRouter.route('/') // guess I cant use .route because parameters wont pass 
 bountyRouter.route('/:bountyId')
 
 .delete((req, res, next) => {
-    const bountyIndex = bounties.findIndex(bounty => bounty._id === req.params.bountyId)
-    bounties.splice(bountyIndex, 1)
-    res.send('Succesfully removed the bounty')
+    Bounty.findOneAndDelete({ _id: req.params.movieId }, (err, deletedBounty) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        res.status(200).send(deletedBounty)
+    })
 })
 
 .put((req, res, next) => { 
-    const bountyIndex = bounties.findIndex(bounty => bounty._id === req.params.bountyId)
-    res.send(Object.assign(bounties[bountyIndex], req.body))
+    Bounty.findOneAndUpdate(
+        { _id: req.params.movieId },
+        { new: true },
+        (err , updatedMovie) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            res.status(202).send(updatedMovie)
+        }
+    )
 })
 
 // need to add query requests for tuff like sith or jedi or is living 
