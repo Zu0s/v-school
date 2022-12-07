@@ -35,7 +35,7 @@ bountyRouter.route('/') // guess I cant use .route because parameters wont pass 
 bountyRouter.route('/:bountyId')
 
 .delete((req, res, next) => {
-    Bounty.findOneAndDelete({ _id: req.params.movieId }, (err, deletedBounty) => {
+    Bounty.findOneAndDelete({ _id: req.params.bountyId }, (err, deletedBounty) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -45,8 +45,10 @@ bountyRouter.route('/:bountyId')
 })
 
 .put((req, res, next) => { 
+    console.log(req.params)
     Bounty.findOneAndUpdate(
-        { _id: req.params.movieId },
+        { _id: req.params.bountyId },
+        req.body,
         { new: true },
         (err , updatedMovie) => {
             if(err) {
@@ -58,6 +60,15 @@ bountyRouter.route('/:bountyId')
     )
 })
 
-// need to add query requests for tuff like sith or jedi or is living 
+bountyRouter.get('/type', (req, res, next) => {
+    Bounty.find({ type: req.query.type }, (err, bounties) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        res.status(200).send(bounties)
+    }
+    )
+})
 
 module.exports = bountyRouter

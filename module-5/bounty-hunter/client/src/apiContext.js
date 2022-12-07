@@ -5,11 +5,15 @@ const ApiContext = createContext()
 
 function ApiContextProvider(props) {
     const [bounties, setBounties] = useState([])
+
+    function getBounties() {
+        axios.get('/bounties')
+        .then(res => setBounties(res.data))
+        .catch(err => console.log(err))
+    }
     
     useEffect(() => {
-        axios.get('/bounties')
-            .then(res => setBounties(res.data))
-            .catch(err => console.log(err))
+        getBounties()
     }, [])
 
     function addBounty(bountyData) {
@@ -33,8 +37,17 @@ function ApiContextProvider(props) {
             .catch(err => console.log(err))
     }
 
+    function handleFilter(e) {
+        console.log(e.target.value)
+        if(e.target.value === 'reset') { getBounties() } else {
+            axios.get(`/bounties/type?type=${e.target.value}`)
+                .then(res => setBounties(res.data))
+                .catch(err => console.log(err))
+        }
+    }
+
     return(
-        <ApiContext.Provider value={{bounties, addBounty, deleteBounty, updateBounty}}>
+        <ApiContext.Provider value={{bounties, addBounty, deleteBounty, updateBounty, handleFilter}}>
             { props.children }
         </ApiContext.Provider>
     )
