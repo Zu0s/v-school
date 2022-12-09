@@ -1,19 +1,22 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
-const mongoose = rqeuire('mongoose')
+const mongoose = require('mongoose')
 require('dotenv').config()
 
 app.use(express.json())
 app.use(morgan('dev'))
 
+mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_URI,
     () => console.log('Connect to the DB')
 )
 
-// routes
+app.use('/authors', require('./routes/authorRouter.js'))
+app.use('/books', require('./routes/bookRouter.js'))
 
-app.listen((err, req, res, next) => {
+
+app.use((err, req, res, next) => {
     console.log(err)
     return res.send({errMsg: err.message})
 })
