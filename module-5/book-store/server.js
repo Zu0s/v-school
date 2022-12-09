@@ -2,11 +2,14 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mongoose = rqeuire('mongoose')
+require('dotenv').config()
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-// mongoose connect
+mongoose.connect(process.env.MONGODB_URI,
+    () => console.log('Connect to the DB')
+)
 
 // routes
 
