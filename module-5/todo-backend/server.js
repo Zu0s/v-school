@@ -31,7 +31,8 @@ app.route('/')
 })
 
 .post((req, res) => {
-    req.body._id == uuidv4()
+    const id = {_id: uuidv4()}
+    Object.assign(req.body, id)
     todos.push(req.body)
     res.send('new todo has been added to the list')
 })
