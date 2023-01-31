@@ -1,6 +1,6 @@
 const express = require('express')
 const bountyRouter = express()
-const Bounty = require('../ models/bounty.js')
+const Bounty = require('../models/bounty.js')
     // {
     //     firstName: 'Mike',
     //     lastName: 'Hawk',
@@ -13,8 +13,11 @@ const Bounty = require('../ models/bounty.js')
 bountyRouter.route('/') // guess I cant use .route because parameters wont pass over
 
 .get((req, res, next) => {
+    console.log('first test')
     Bounty.find((err, bounties) => {
+    console.log('second test')
         if(err) {
+            console.log('third test')
             res.status(500)
             return next(err)
         }
