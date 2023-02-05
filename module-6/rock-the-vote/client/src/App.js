@@ -5,6 +5,7 @@ import { UserContext } from './context/UserProvider';
 import Navbar from './components/Navbar';
 import Profile from './pages/Profile';
 import Public from './pages/Public';
+import SpecificIssue from './pages/SpecificIssue';
 
 export default function App(){
   const {token, logout, signup, login} = useContext(UserContext)
@@ -25,6 +26,7 @@ export default function App(){
           path="/public"
           element={<Public />}
         />
+        <Route path='/issue/:issueId' element={<SpecificIssue />}/>
       </Routes>
     </div>
   )

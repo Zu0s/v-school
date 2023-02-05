@@ -67,9 +67,8 @@ issueRouter.put('/upvote/:issueId', (req, res, next) => {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId, user: req.auth._id },
         {
-            $pull: {upvotes: req.auth._id},
             $pull: {downvotes: req.auth._id},
-            $push: {upvotes: req.auth._id}
+            $addToSet: {upvotes: req.auth._id}
         },
         { new: true },
         (err, updatedIssue) => {
@@ -86,9 +85,8 @@ issueRouter.put('/downvote/:issueId', (req, res, next) => {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId, user: req.auth._id },
         {
-            $pull: {downvotes: req.auth._id},
             $pull: {upvotes: req.auth._id},
-            $push: {downvotes: req.auth._id}
+            $addToSet: {downvotes: req.auth._id}
         },
         { new: true },
         (err, updatedIssue) => {
