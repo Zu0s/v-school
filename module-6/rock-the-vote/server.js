@@ -23,7 +23,7 @@ app.use((err, req, res, next) => {
     if(err.name === 'UnathorizedErrpr') {
         res.status(err.status)
     }
-    return res.send({Errmsg: err.message})
+    return res.send({errMsg: err.message})
 })
 
 app.listen(3001, () => {

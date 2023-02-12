@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function AuthForm(props){
   const {
+    errMsg,
     handleChange, 
     handleSubmit, 
     btnText, 
@@ -10,6 +11,7 @@ export default function AuthForm(props){
       password
     } 
   } = props
+
   
   return (
     <form onSubmit={handleSubmit}>
@@ -26,6 +28,7 @@ export default function AuthForm(props){
         onChange={handleChange} 
         placeholder="Password"/>
       <button>{ btnText }</button>
+      <p style={{color: 'red'}}>{errMsg}</p>
     </form>
   )
 }

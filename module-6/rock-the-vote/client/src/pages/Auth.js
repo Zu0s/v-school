@@ -7,7 +7,7 @@ import AuthForm from '../components/AuthForm'
 
 const initInputs = { username: '', password: ''}
 
-export default function Auth({signup, login}) {
+export default function Auth({signup, login, resetAuthErr, errMsg}) {
     const [toggle, setToggle] = useState(true)
     const [inputs, setInputs] = useState(initInputs)
 
@@ -29,27 +29,34 @@ export default function Auth({signup, login}) {
         login(inputs)
       }
 
+      function toggleForm() {
+        setToggle(prev => !prev)
+        resetAuthErr()
+      }
+
     return(
         <div>
             { toggle ? 
                 <>
                     <AuthForm 
-                    handleChange={handleChange}
-                    handleSubmit={handleSignup}
-                    inputs={inputs}
-                    btnText="Sign up"
+                      handleChange={handleChange}
+                      handleSubmit={handleSignup}
+                      inputs={inputs}
+                      btnText="Sign up"
+                      errMsg={errMsg}
                     />
-                    <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
+                    <p onClick={toggleForm}>Already a member?</p>
                 </>
                 :
                 <>
                     <AuthForm 
-                    handleChange={handleChange}
-                    handleSubmit={handleLogin}
-                    inputs={inputs}
-                    btnText="Login"
+                      handleChange={handleChange}
+                      handleSubmit={handleLogin}
+                      inputs={inputs}
+                      btnText="Login"
+                      errMsg={errMsg}
                     />
-                    <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
+                    <p onClick={toggleForm}>Not a member?</p>
               </>
             }
         </div>
